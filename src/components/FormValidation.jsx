@@ -3,10 +3,11 @@ import { useState } from "react";
 
 const FormValidation = () => {
   const [formData, setFormData] = useState({
-    firsName:'',
+    firstName:'',
     lastName:'',
     email:'',
-    message:''
+    message:'',
+    queryType: ''
     
   });
 
@@ -17,7 +18,7 @@ const FormValidation = () => {
   };
 
   function handleSubmit(event){
-    // event.preventDefault();
+    event.preventDefault();
     console.log(formData)
   }
 
@@ -34,7 +35,7 @@ const FormValidation = () => {
                 value={formData.firsName}
                 id="name"
                 onChange={handleInputChange}
-                name="name"
+                name="firstName"
                 required
               />{" "}
               <br />
@@ -47,7 +48,7 @@ const FormValidation = () => {
                 className="name_email"
                 onChange={handleInputChange}
                 id="name"
-                name="name"
+                name="lastName"
                 required
               />
             </div>
@@ -66,10 +67,27 @@ const FormValidation = () => {
           <label htmlFor="query type">Query Type</label>
           <div className="click_me">
             <div className="general">
-              <input type="radio" /> <span>General Enquiry</span>
+              <input 
+                type="radio"
+                name="queryType"
+                value="general"
+                onChange={handleInputChange}
+                checked={formData.queryType === "general"}
+              
+              
+              required/> <span>General Enquiry</span>
             </div>
             <div className="support">
-              <input type="radio" required /> <span>Support Request</span>
+              <input
+                type="radio"
+                name="queryType"
+                value="support"
+                onChange={handleInputChange}
+                checked={formData.queryType === "support"}
+              
+              
+              required /> 
+              <span>Support Request</span>
             </div>
           </div>
           <label htmlFor="message">Message</label>
