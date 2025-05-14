@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-color: var(--Green_200);
+  padding: 2rem;
+  width: 100%;
+  height: 100vh;
+  font-family: Karla;
+}
