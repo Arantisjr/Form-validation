@@ -18,7 +18,7 @@ const FormValidation = () => {
  const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await fetch('http://127.0.0.1:5000', {
+    const res = await fetch('http://127.0.0.1:5000/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(formData),
@@ -26,6 +26,15 @@ const FormValidation = () => {
     });
     const results = await res.json();
        console.log(results);
+    setFormData(
+      {
+    firstName: '',
+    lastName: '',
+    email: '',
+    message: '',
+    queryType: ''
+      }
+    )
        
   }catch(error){
     console.error('Error submitting form', error)
