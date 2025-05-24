@@ -15,14 +15,26 @@ const FormValidation = () => {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log(formData);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await fetch('http://127.0.0.1:5000', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(formData),
+
+    });
+    const results = await res.json();
+       console.log(results);
+       
+  }catch(error){
+    console.error('Error submitting form', error)
   }
+ }
 
   return (
     <div className="main_container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} method="post" >
         <div className="names_div">
           <div className="first_name">
             <label htmlFor="firstName">First Name</label>
@@ -105,7 +117,7 @@ const FormValidation = () => {
           </label>
         </div>
 
-        <input type="submit" className="submit" value="Submit" />
+        <input type="submit" className="submit" value="submit" />
       </form>
     </div>
   );
